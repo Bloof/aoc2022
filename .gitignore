@@ -1,0 +1,6 @@
+/target
+.idea/
+/inputs/*
+.DS_Store
+*.iml
+cookie.txt
