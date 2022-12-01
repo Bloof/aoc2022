@@ -1,9 +1,7 @@
-use std::{fs, process};
 use std::io::Error;
-
+use std::{fs, process};
 
 pub fn get_aoc_day_data(day: &str) -> String {
-
     let data = match get_day_file_data(day) {
         Ok(data) => data,
         Err(_) => {
@@ -22,12 +20,12 @@ pub fn get_aoc_day_data(day: &str) -> String {
                 },
                 Err(_) => process::exit(0x0100),
             };
-        
+
             let data = match response {
                 Ok(data) => data,
                 Err(_) => process::exit(0x0100),
             };
-        
+
             match fs::write(get_day_file_path(day), &data) {
                 Ok(file) => println!("File {:?} saved succesfully", file),
                 Err(e) => println!("An error occured: {:?}", e),
@@ -61,7 +59,7 @@ fn get_cookie() -> String {
 }
 
 fn get_aoc_url(day: &str) -> String {
-    let mut url: String = "https:adventofcode.com/2021/day/".to_owned();
+    let mut url: String = "https:adventofcode.com/2022/day/".to_owned();
     url.push_str(day);
     url.push_str("/input");
 
