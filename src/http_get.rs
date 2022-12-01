@@ -18,13 +18,17 @@ pub fn get_aoc_day_data(day: &str) -> String {
                     reqwest::StatusCode::NOT_FOUND => panic!("Request url not found, check url"),
                     _ => panic!("Request failed unexpectedly, check your cookie.txt"),
                 },
-                Err(_) => process::exit(0x0100),
+                Err(e) => panic!("Unknown error while calling aoc server: {:?}", e),
             };
 
             let data = match response {
                 Ok(data) => data,
-                Err(_) => process::exit(0x0100),
+                Err(e) => panic!("Unknown error while convertin response: {:?}", e),
             };
+
+            let inputs_path = get_inputs_directory_path();    
+
+            fs::create_dir_all(inputs_path).unwrap(); 
 
             match fs::write(get_day_file_path(day), &data) {
                 Ok(file) => println!("File {:?} saved succesfully", file),
@@ -66,14 +70,22 @@ fn get_aoc_url(day: &str) -> String {
     return url;
 }
 
-fn get_day_file_path(day: &str) -> String {
-    let mut day_path = std::env::current_dir()
+fn get_inputs_directory_path() -> String {
+    let mut inputs_path = std::env::current_dir()
         .unwrap()
         .to_str()
         .unwrap()
         .to_owned();
 
-    day_path.push_str("/inputs/day");
+    inputs_path.push_str("/inputs");
+
+    return inputs_path;
+}
+
+fn get_day_file_path(day: &str) -> String {
+    let mut day_path = get_inputs_directory_path().to_owned();
+
+    day_path.push_str("/day");
     day_path.push_str(day);
     day_path.push_str(".txt");
 
