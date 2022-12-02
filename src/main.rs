@@ -2,11 +2,9 @@ use std::io;
 
 use crate::{day1::day1::day_one, day2::day2::day_two};
 
-
 mod http_get;
 mod day1;
 mod day2;
-
 
 fn main() {
 

@@ -1,5 +1,5 @@
 use std::io::Error;
-use std::{fs, process};
+use std::{fs};
 
 pub fn get_aoc_day_data(day: &str) -> String {
     let data = match get_day_file_data(day) {
