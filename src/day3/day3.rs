@@ -7,10 +7,8 @@ pub fn day_three(day: i32) {
 
     let data = &parse_data(data.to_owned()).unwrap();
 
-    parse_rucksack(data[1].to_owned());
     println!("Day 3 part 1: {:?}", day_three_part_one(data.to_owned()));
 
-    // println!("Day 3 part 2: {:?}", day_two_part_two(test.to_owned()));
 }
 
 fn day_three_part_one(data: Vec<String>) -> i32 {
@@ -101,12 +99,6 @@ fn get_priority_board() -> HashMap<String, i32>{
     priority.insert(String::from("X"), 50);
     priority.insert(String::from("Y"), 51);
     priority.insert(String::from("Z"), 52);
-
-
-    
-
-
-    priority.insert(String::from("Yellow"), 50);
 
     return priority;
 
