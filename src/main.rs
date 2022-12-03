@@ -8,7 +8,7 @@ mod day2;
 mod day3;
 
 fn main() {
-
+    day_three(3);
     println!("Type in which day you want to execute:");
     let mut day = String::new();
 
