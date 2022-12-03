@@ -2,6 +2,12 @@ use crate::http_get::get_aoc_day_data;
 
 use std::{cmp, collections::HashMap, error::Error};
 
+struct Group {
+    row_one: Vec<char>,
+    row_two: Vec<char>,
+    row_three: Vec<char>,
+}
+
 pub fn day_three(day: i32) {
     let data = get_aoc_day_data(&day.to_string());
 
@@ -32,8 +38,11 @@ fn day_three_part_two(data: Vec<String>) -> i32 {
             let row_one = &data[idx];
             let row_two = &data[idx + 1];
             let row_three = &data[idx + 2];
-            summed_priority +=
-                parse_rucksack_part_two(format!("{}{}{}", &row_one, &row_two, &row_three));
+            summed_priority += parse_rucksack_part_two(Group {
+                row_one: (row_one.chars().collect()),
+                row_two: (row_two.chars().collect()),
+                row_three: (row_three.chars().collect()),
+            });
         }
 
         i += 1;
@@ -46,30 +55,7 @@ fn day_three_part_two(data: Vec<String>) -> i32 {
     return 1;
 }
 
-fn parse_rucksack_part_two(concated: String) -> i32 {
-    let characters = concated.chars();
-
-    // let asd: Vec<char> = characters.to_owned().map(|elf| elf).collect();
-
-    let mut map: HashMap<String, i32> = HashMap::new();
-
-    for c in characters {
-        let old_value = map.get(&c.to_string()).to_owned();
-        let mut value = 1;
-
-        match old_value {
-            Some(v) => {
-                value  = 1 + v.to_owned();
-            },
-            _ => (),
-
-        };
-
-        map.insert(c.to_string(), value);
-    }
-
-    println!("asd: {:?}", 1);
-
+fn parse_rucksack_part_two(group: Group) -> i32 {
     return 1;
 }
 
