@@ -54,21 +54,21 @@ fn parse_rucksack_part_two(concated: String) -> i32 {
     let mut map: HashMap<String, i32> = HashMap::new();
 
     for c in characters {
-        let mut old_value = map.get(&c.to_string()).to_owned();
+        let old_value = map.get(&c.to_string()).to_owned();
         let mut value = 1;
+
         match old_value {
             Some(v) => {
-                let mut paska = v.to_owned();
-                return paska += 1;
+                value  = 1 + v.to_owned();
             },
-            _ => 1,
+            _ => (),
 
         };
 
-        map.insert(c.to_string(), 1);
+        map.insert(c.to_string(), value);
     }
 
-    // println!("asd: {:?}", characters);
+    println!("asd: {:?}", 1);
 
     return 1;
 }
