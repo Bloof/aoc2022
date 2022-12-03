@@ -78,12 +78,15 @@ fn check_points(opponent: Shapes, player: ShapeRules) -> i32 {
 fn check_part_two_points(opponent: Shapes, secret_rules: SecretRules) -> i32 {
     let opponent = get_rules(opponent);
     if secret_rules == SecretRules::Lose {
+
         let player_choice = get_rules(opponent.wins_to);
         return player_choice.value;
     } else if secret_rules == SecretRules::Draw {
+
         let player_choice = get_rules(opponent.draw_to);
         return player_choice.value + 3;
     } else if secret_rules == SecretRules::Win {
+        
         let player_choice = get_rules(opponent.loses_to);
         return player_choice.value + 6;
     }
