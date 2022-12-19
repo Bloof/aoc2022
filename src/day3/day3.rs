@@ -37,13 +37,7 @@ fn day_three_part_two(data: Vec<String>) -> i32 {
 }
 
 fn find_badge_priorities(priorities: &HashMap<String, i32>, rucksacks: &[String]) -> i32 {
-    // Count the frequency of each item type in the rucksacks
-    let mut counts: HashMap<char, i32> = HashMap::new();
-    for rucksack in rucksacks {
-        for c in rucksack.chars() {
-            *counts.entry(c).or_insert(0) += 1;
-        }
-    }
+
     let common_char = common_char(rucksacks);
 
     // Look up the priority for the most frequent item type

@@ -17,6 +17,7 @@ fn main() {
 
     let day: i32 = day.trim().parse().unwrap();
 
+    
     let day_to_run: fn(day: i32) = match day {
         1 => day_one,
         2 => day_two,
