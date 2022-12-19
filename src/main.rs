@@ -8,7 +8,6 @@ mod day2;
 mod day3;
 
 fn main() {
-    day_three(3);
     println!("Type in which day you want to execute:");
     let mut day = String::new();
 
@@ -17,7 +16,6 @@ fn main() {
         .expect("Failed to read line");
 
     let day: i32 = day.trim().parse().unwrap();
-
 
     let day_to_run: fn(day: i32) = match day {
         1 => day_one,
